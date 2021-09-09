@@ -22,7 +22,7 @@ where T: std::fmt::Debug + PartialEq + PartialOrd {
         if v[half] == element_to_find {
             println!("found the element {:?} at index {}", element_to_find, half);
             return Result::Ok(half);
-        } else if min >= max {
+        } else if min == max-1 {
             println!("The element doesn't exist in the list");
             return Result::Err("Couldn't find element in the array");
         } else {
@@ -38,8 +38,11 @@ where T: std::fmt::Debug + PartialEq + PartialOrd {
 
 fn main() {
     let xs = vec![1i32, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let element_to_find: i32 = 6;
+//    let mut element_to_find: i32 = 6;
 /*    swap(&mut xs, 0, 100);
     println!("New Array : {:?}", xs);*/
-    println!("{:?}", binary_search(&xs, element_to_find));
+    print!("Searching for 6");
+    println!("{:?}", binary_search(&xs, 6));
+    print!("\n\nSearching for 20");
+    println!("{:?}", binary_search(&xs, 20));
 }
