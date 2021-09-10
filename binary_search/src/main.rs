@@ -15,7 +15,7 @@ where T: std::fmt::Debug + PartialEq + PartialOrd {
     let size: usize = v.len();
     println!("The size is {}, we need to find the element {:?}", size, element_to_find);
     let mut min: usize = 0;
-    let mut max: usize = size-1;
+    let mut max: usize = size;
     let mut half: usize = (max+min)/2;
 
     loop {
@@ -27,9 +27,9 @@ where T: std::fmt::Debug + PartialEq + PartialOrd {
             return Result::Err("Couldn't find element in the array");
         } else {
             if element_to_find > v[half] {
-                min = half.clone();
+                min = half;
             } else {
-                max = half.clone();
+                max = half;
             }
             half = (max+min)/2;
         }
@@ -42,7 +42,7 @@ fn main() {
 /*    swap(&mut xs, 0, 100);
     println!("New Array : {:?}", xs);*/
     print!("Searching for 6");
-    println!("{:?}", binary_search(&xs, 6));
+    println!("{:?}", binary_search(&xs, 1));
     print!("\n\nSearching for 20");
     println!("{:?}", binary_search(&xs, 20));
 }
